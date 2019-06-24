@@ -14,8 +14,8 @@ public class Application {
 		SparkContext sc = new SparkContext(conf);
 		sc.hadoopConfiguration().set("fs.wasb.impl", "org.apache.hadoop.fs.azure.NativeAzureFileSystem");
 		sc.hadoopConfiguration().set("fs.AbstractFileSystem.wasb.impl", "org.apache.hadoop.fs.azure.Wasb");
-		sc.hadoopConfiguration().set("fs.azure.account.key.myteststorageaccount1233.blob.core.windows.net",
-				"3zOVRrDLVBEUX1NMXXWPCnyXI96jGQwiU+nIUs179tArH/96BALVgS8TNfxMrWVLUGFTCZSQ8owVTdUgiIeR9Q==");
+		sc.hadoopConfiguration().set("fs.azure.account.key.YourStorageAccountName.blob.core.windows.net",
+				"YourStorageAccessKey");
 		SparkSession sql = new SparkSession(sc);
 
 		Dataset<Row> mysqldf = sql.read().format("jdbc").option("driver", "com.mysql.jdbc.Driver")
@@ -33,8 +33,3 @@ public class Application {
 	}
 }
 
-/*
- * DefaultEndpointsProtocol=https; AccountName=myteststorageaccount1233;
- * AccountKey=3zOVRrDLVBEUX1NMXXWPCnyXI96jGQwiU+nIUs179tArH/
- * 96BALVgS8TNfxMrWVLUGFTCZSQ8owVTdUgiIeR9Q==; EndpointSuffix=core.windows.net
- */
